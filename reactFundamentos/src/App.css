@@ -1,0 +1,10 @@
+.cards {
+    display: flex;
+    flex-direction: column;
+    width: 1170px;
+    margin: 0 auto;
+}
+
+.cards h1 {
+    text-align: center;
+}
