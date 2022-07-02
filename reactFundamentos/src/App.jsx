@@ -11,6 +11,9 @@ import TabelaProdutos from './components/repeticao/TabelaProdutos';
 import ParOuImpar from './components/condicional/ParOuImpar';
 import DiretaPai from './components/comunicacao/DiretaPai';
 import IndiretaPai from './components/comunicacao/IndiretaPai';
+import Input from './components/formulario/Input';
+import Contador from './components/contador/Contador';
+import Mega from './components/mega/Mega';
 
 function App(){
     return(
@@ -18,6 +21,18 @@ function App(){
 
         <div className='cards'>
             <h1>Fundamentos React</h1>
+
+            <Card titulo="#12 - Desafio Megasena">
+                <Mega />
+            </Card>
+
+            <Card titulo="#11 - Contador (class)">
+                <Contador numInicial={10}/>
+            </Card>
+
+            <Card titulo="#10 - Componente controlado (input)">
+                <Input />
+            </Card>
 
             <Card titulo="#09 - Comunicação Indireta">
                 <IndiretaPai />

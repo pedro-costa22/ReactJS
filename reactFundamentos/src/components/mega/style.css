@@ -1,0 +1,28 @@
+.display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.display p {
+    margin: 0 5px;
+}
+
+.controll {
+    display: flex;
+    justify-content: center;
+}
+
+.controll input {
+    margin-right: 10px;
+    padding: 4px;
+}
+
+.controll button {
+    border: none;
+    color: #fff;
+    background-color: rgb(34, 136, 34);
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+}
