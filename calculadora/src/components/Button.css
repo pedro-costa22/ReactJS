@@ -1,0 +1,54 @@
+
+.buttonNumbers {
+    border: none;
+    width: 25%;
+    height: 60px;
+    background: #f0f0f0;
+    color: #000;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    transition: all ease .2s;
+}
+
+.buttonNumbers:hover {
+    background: #e2e2e2;
+}
+
+.clear {
+    width: 75%;
+    font-size: 1.5rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    border: none;
+    background: #e2e2e2;
+}
+
+.clear:hover {
+    background: #dadada;
+}
+
+.operator {
+    background-color: #fa8231;
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+.operator:hover{
+    background-color: #fa8231cc;
+}
+
+.zero {
+    width: 50%;
+    border-radius: 0px 0px 0px 8px;
+}
+
+.borderBottom {
+    border-radius: 0 0 4px 4px;
+}
+
+.equal {
+    border-radius: 0px 0px 8px 0px;
+}
