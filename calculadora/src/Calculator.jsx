@@ -6,56 +6,47 @@ import Button from './components/Button';
 
 function Calculator(){
 
-    const [insert, setInsert] = useState("");
-    const [previous, setPrevious] = useState("");
-    const [operator, setOperator] = useState("");
+    const [state, setState] = useState({
+        insert: '',
+        previous: '',
+        operator: '',
+        result: ''
+    })
 
     const inserNumber = (num) =>  {
-        let insertAdd = insert + num;
-        setInsert(insertAdd);
+        let insertAdd = state.insert + num;
+        setState(old => ({...old, insert: insertAdd}))
     }
 
     const clearDisplay = () => {
-        setInsert("");
-        setPrevious("");
-        setOperator("");
+        setState(old => ({...old, insert: '', previous: '', operator: '', result: ''}))
     }
 
 
     const calculator = (operator2) => {
-        console.log(insert);
 
-         setPrevious(insert);
-         console.log(previous);
-
-         setInsert(null);
-         setOperator(operator2);
-
-        let previousNumber = Number(previous);
-        let insertNumber = Number(insert);
+        setState(old => ({...old, previous: state.insert, insert: '', operator: operator2}))
 
         let result = null;
         switch(operator2){
             case "+":
-                result = previousNumber + insertNumber;
-                setPrevious(result);
-                break;
+                result = Number(state.previous) + Number(state.insert)
+                setState(old => ({...old, insert: result}))
+                break;;
 
             case "-":
-                result = previousNumber - insertNumber;
-                setPrevious(result);
+                result = Number(state.previous) - Number(state.insert)
+                setState(old => ({...old, insert: result}))
                 break;
 
             case "*":
-                result = previousNumber * insertNumber
-                console.log(result, previousNumber, insertNumber);
-                //setPrevious(result);
+                result = Number(state.previous) * Number(state.insert)
+                setState(old => ({...old, insert: result}))
                 break;
-
+                
             case "/":
-                result = previousNumber / insertNumber;
-                console.log(result, previous, insert);
-                //setPrevious(result);
+                result = Number(state.previous) / Number(state.insert)
+                setState(old => ({...old, insert: result}))
                 break;
 
     
@@ -68,8 +59,8 @@ function Calculator(){
 
     const equal = (operator) => {
 
-        let previousNumber = Number(previous);
-        let insertNumber = Number(insert);
+        let previousNumber = Number(state.previous);
+        let insertNumber = Number(state.insert);
 
         let result = null; 
         switch(operator){
@@ -82,11 +73,11 @@ function Calculator(){
             break;
 
             case "*":
-                result = previous * insert;
+                result = previousNumber * inserNumber;
             break;
 
             case "/":
-                result = previous / insert;
+                result = previousNumber / inserNumber;
             break;
 
             default:
@@ -94,9 +85,7 @@ function Calculator(){
             break;
         }
 
-        setInsert(result);
-        setPrevious(0);
-        setOperator("");
+        setState(old => ({...old, previous: 0, insert: result, operator: ''}))
     }
 
 
@@ -105,8 +94,8 @@ function Calculator(){
 
     return (
         <div className='cont_calculator'>
-            <Display previous={previous} insert={insert} operator={operator}/>
-           
+            <Display previous={state.previous} insert={state.insert} operator={state.operator}/>
+
             <div className='row'>
                 <Button value="AC" classButton="clear"  setValue={clearDisplay}/>
                 <Button value="/" classButton='buttonNumbers operator' setValue={calculator}/>
@@ -136,7 +125,7 @@ function Calculator(){
             <div className='row'>
                 <Button value={0} classButton='buttonNumbers zero' setValue={inserNumber}/>
                 <Button value="." classButton='buttonNumbers'setValue={inserNumber}/>
-                <Button value="=" classButton='buttonNumbers operator equal' setValue={() => equal(operator)}/>
+                <Button value="=" classButton='buttonNumbers operator equal' setValue={() => equal(state.operator)}/>
             </div>
 
         </div>
