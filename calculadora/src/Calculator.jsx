@@ -10,8 +10,9 @@ function Calculator(){
     const [previous, setPrevious] = useState("");
     const [operator, setOperator] = useState("");
 
+
     const inserNumber = (num) =>  {
-        let insertAdd = insert + num;
+        let insertAdd = `${insert}${num}`;
         setInsert(insertAdd);
     }
 
@@ -22,20 +23,19 @@ function Calculator(){
     }
 
 
-    const calculator = (operator2) => {
-        console.log(insert);
-
-         setPrevious(insert);
-         console.log(previous);
-
-         setInsert(null);
-         setOperator(operator2);
+    const calculator = (op) => {
+        
+        setPrevious(insert);
+        setInsert('');
+        setOperator(op)
 
         let previousNumber = Number(previous);
         let insertNumber = Number(insert);
 
         let result = null;
-        switch(operator2){
+
+    
+        switch(operator){
             case "+":
                 result = previousNumber + insertNumber;
                 setPrevious(result);
@@ -49,24 +49,24 @@ function Calculator(){
             case "*":
                 result = previousNumber * insertNumber
                 console.log(result, previousNumber, insertNumber);
-                //setPrevious(result);
+                setPrevious(result);
                 break;
 
             case "/":
                 result = previousNumber / insertNumber;
                 console.log(result, previous, insert);
-                //setPrevious(result);
+                setPrevious(result);
                 break;
 
     
             default:
                 result = 20;
-            break;
+            break; 
  
         } 
     }
 
-    const equal = (operator) => {
+    const equal = () => {
 
         let previousNumber = Number(previous);
         let insertNumber = Number(insert);
@@ -78,15 +78,15 @@ function Calculator(){
             break;
 
             case "-":
-                result = previousNumber - inserNumber;
+                result = previousNumber - insertNumber;
             break;
 
             case "*":
-                result = previous * insert;
+                result = previousNumber * insertNumber;
             break;
 
             case "/":
-                result = previous / insert;
+                result = previousNumber / insertNumber;
             break;
 
             default:
@@ -95,8 +95,8 @@ function Calculator(){
         }
 
         setInsert(result);
-        setPrevious(0);
-        setOperator("");
+        setPrevious('');
+        setOperator(''); 
     }
 
 
@@ -136,7 +136,7 @@ function Calculator(){
             <div className='row'>
                 <Button value={0} classButton='buttonNumbers zero' setValue={inserNumber}/>
                 <Button value="." classButton='buttonNumbers'setValue={inserNumber}/>
-                <Button value="=" classButton='buttonNumbers operator equal' setValue={() => equal(operator)}/>
+                <Button value="=" classButton='buttonNumbers operator equal' setValue={equal}/>
             </div>
 
         </div>
